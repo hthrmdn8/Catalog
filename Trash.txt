@@ -1,0 +1,26 @@
+WORKDIR "/src/."
+RUN dotnet build "Catalog.csproj" -c Release -o /app/build
+
+FROM build AS publish
+
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Catalog.dll"]
+
+
+"launchUrl": "swagger",
+
+
+    <table>
+        <tr>
+            <th>Is Complete?</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+                <input type="checkbox" id="edit-isComplete"> 
